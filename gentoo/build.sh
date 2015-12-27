@@ -46,4 +46,4 @@ cd /usr/src/linux
 ./usr/gen_init_cpio list > rootfs.cpio
 make -j$NCPUS
 cd -
-cp /usr/src/linux/arch/x86/boot/bzImage gentoo.efi
+cp /usr/src/linux/arch/x86/boot/bzImage bootx64.efi
