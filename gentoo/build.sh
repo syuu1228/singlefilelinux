@@ -1,5 +1,5 @@
 #!/bin/sh -e
-NCPUS=`grep '^apicid' /proc/cpuinfo|wc -l`
+NCPUS=`nproc`
 BASE_DIR=`pwd`
 
 rm -rf tmp gentoo squashfs-root
