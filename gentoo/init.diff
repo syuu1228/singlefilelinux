@@ -1,0 +1,73 @@
+--- init	2015-12-27 10:49:51.430640965 +0900
++++ /root/gentoo/init	2015-12-27 09:51:25.771841146 +0900
+@@ -452,38 +452,40 @@
+ 		[ ! -e "${NEW_ROOT}/dev/$minor" ] && mknod -m 600 "${NEW_ROOT}/dev/tty$minor" c 4 $minor
+ 	done
+ 
+-	if [ "${REAL_ROOT}" != "/dev/nfs" ] && [ "${LOOPTYPE}" != "sgimips" ]
+-	then
+-		bootstrapCD
+-	fi
+-
+-	if [ "${REAL_ROOT}" = '' ]
+-	then
+-		warn_msg "No bootable medium found. Waiting for new devices..."
+-		COUNTER=0
+-		while [ ${COUNTER} -lt 3 ]; do
+-			sleep 3
+-			let COUNTER=${COUNTER}+1
+-		done
+-		sleep 1
+-		bootstrapCD
+-	fi
+-
+-	if [ "${REAL_ROOT}" = '' ]
+-	then
+-		# Undo stuff
+-		umount  "${NEW_ROOT}/dev" 2>/dev/null
+-		umount  "${NEW_ROOT}/sys" 2>/dev/null
+-		umount /sys 2>/dev/null
+-
+-		umount  "${NEW_ROOT}"
+-		rm -rf  "${NEW_ROOT}/*"
+-
+-		bad_msg 'Could not find CD to boot, something else needed!'
+-		CDROOT=0
+-	fi
++#	if [ "${REAL_ROOT}" != "/dev/nfs" ] && [ "${LOOPTYPE}" != "sgimips" ]
++#	then
++#		bootstrapCD
++#	fi
++#
++#	if [ "${REAL_ROOT}" = '' ]
++#	then
++#		warn_msg "No bootable medium found. Waiting for new devices..."
++#		COUNTER=0
++#		while [ ${COUNTER} -lt 3 ]; do
++#			sleep 3
++#			let COUNTER=${COUNTER}+1
++#		done
++#		sleep 1
++#		bootstrapCD
++#	fi
++#
++#	if [ "${REAL_ROOT}" = '' ]
++#	then
++#		# Undo stuff
++#		umount  "${NEW_ROOT}/dev" 2>/dev/null
++#		umount  "${NEW_ROOT}/sys" 2>/dev/null
++#		umount /sys 2>/dev/null
++#
++#		umount  "${NEW_ROOT}"
++#		rm -rf  "${NEW_ROOT}/*"
++#
++#		bad_msg 'Could not find CD to boot, something else needed!'
++#		CDROOT=0
++#	fi
+ fi
+ 
++got_good_root=1
++
+ # Determine root device
+ good_msg 'Determining root device...'
+ while true
