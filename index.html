@@ -45,30 +45,31 @@
 It only requires to copy just one file to USB stick, no need re-format it.</p>
 
 <h3>
-<a id="how-does-it-work" class="anchor" href="#how-does-it-work" aria-hidden="true"><span class="octicon octicon-link"></span></a>How does it work?</h3>
+<a id="how-to-use-it" class="anchor" href="#how-to-use-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use it?</h3>
 
 <p>Download bootx64.efi, then copy it to \EFI\BOOT\ directory on USB stick.
 <img src="http://s3.amazonaws.com/syuu1/singlefilelinux.gif" alt="install singlefilelinux"></p>
 
 <h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a id="live-image" class="anchor" href="#live-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>Live image</h3>
 
-<p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.</p>
+<h2>
+<a id="gentoo-install-disk" class="anchor" href="#gentoo-install-disk" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gentoo install disk</h2>
 
-<h3>
-<a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating pages manually</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<ul>
+<li><a href="https://sourceforge.net/projects/singlefilelinux/files/gentoo/bootx64.efi/download">bootx64.efi</a></li>
+</ul>
 
 <h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<a id="how-does-it-work" class="anchor" href="#how-does-it-work" aria-hidden="true"><span class="octicon octicon-link"></span></a>How does it work?</h3>
 
-<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
+<p>It is combination of EFI-stub kernel and embedded initramfs.
+With EFI-stub, linux kernel can directly bootable from :\EFI\BOOT\BOOTX64.EFI.
+This won't need any bootloader unlike traditional boot method on BIOS environment.</p>
+
+<p>On Live-CD, initramfs tries to mount CD-ROM, locate squashfs image and mount it.
+On this image we modified the sequence, it does not mount any block device, initramfs itself contains squashfs image.
+Therefore it does not need any block device, just works with one kernel binary.</p>
       </section>
 
     </div>
